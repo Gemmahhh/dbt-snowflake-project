@@ -1,1 +1,0 @@
-select * from raw_schema.e_commerce

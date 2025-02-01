@@ -25,6 +25,9 @@ clean-targets:         # directories to be removed by `dbt clean`
   - "dbt_packages"
 
 
+vars:
+  future_proof_date: '9999-12-31'
+
 # Configuring models
 # Full documentation: https://docs.getdbt.com/docs/configuring-models
 
@@ -37,8 +40,13 @@ clean-targets:         # directories to be removed by `dbt clean`
 
 models:
   prefect_project:
+    +enabled: true
     # Applies to all files under models/example/
-    staging:
+    staging_schema:
+      +schema: staging_schema
       +materialized: table
-    transformed:
+      +enabled: true
+    transformed_schema:
+      +schema: transformed_schema
       +materialized: table
+      +enabled: true
